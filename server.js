@@ -7,7 +7,7 @@ const path = require('path');
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -232,5 +232,5 @@ app.post('/api/audit', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Ascend audit backend running on http://localhost:${PORT}`);
+  console.log(`Ascend audit backend running on port ${PORT}`); 
 });
